@@ -106,10 +106,13 @@ class LoomySensor(CoordinatorEntity[LoomyCoordinator], SensorEntity):
         """Initialize the sensor."""
         super().__init__(coordinator)
         self.entity_description = description
-        entry_id = coordinator.config_entry.entry_id
-        self._attr_unique_id = f"{entry_id}_{description.key}"
+        entry = coordinator.config_entry
+        self._attr_unique_id = f"{entry.entry_id}_{description.key}"
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, entry_id)}, name="Loomy"
+            identifiers={(DOMAIN, entry.entry_id)},
+            name="Loomy",
+            manufacturer="Loomy",
+            model="Dongle",
         )
 
     @property
