@@ -36,6 +36,107 @@
       },
       "water": {
         "name": "Water"
+      },
+      "consumption_day": {
+        "name": "Energy consumption day"
+      },
+      "consumption_night": {
+        "name": "Energy consumption night"
+      },
+      "injection_day": {
+        "name": "Energy injection day"
+      },
+      "injection_night": {
+        "name": "Energy injection night"
+      },
+      "average_demand": {
+        "name": "Average demand"
+      },
+      "peak_demand": {
+        "name": "Peak demand this month"
+      },
+      "current_consumption_phase": {
+        "name": "Power consumption {phase}"
+      },
+      "current_injection_phase": {
+        "name": "Power injection {phase}"
+      },
+      "voltage": {
+        "name": "Voltage {phase}"
+      },
+      "current": {
+        "name": "Current {phase}"
+      },
+      "tariff": {
+        "name": "Tariff",
+        "state": {
+          "day": "Day",
+          "night": "Night"
+        }
+      },
+      "breaker_state": {
+        "name": "Breaker",
+        "state": {
+          "disconnected": "Disconnected",
+          "connected": "Connected",
+          "ready_for_reconnection": "Ready for reconnection"
+        }
+      },
+      "virtual_relay": {
+        "name": "Virtual relay {relay}",
+        "state": {
+          "disconnected": "Disconnected",
+          "connected": "Connected",
+          "ready_for_reconnection": "Ready for reconnection"
+        }
+      },
+      "limiter_threshold": {
+        "name": "Power limiter threshold"
+      },
+      "fuse_threshold": {
+        "name": "Fuse supervision threshold"
+      },
+      "gas_valve": {
+        "name": "Gas valve",
+        "state": {
+          "disconnected": "Closed",
+          "connected": "Open",
+          "ready_for_reconnection": "Ready to open"
+        }
+      },
+      "grid_configuration": {
+        "name": "Grid configuration",
+        "state": {
+          "3x230v": "3x230V",
+          "3n400v": "3N400V"
+        }
+      },
+      "meter_time": {
+        "name": "Meter time"
+      },
+      "text_message": {
+        "name": "Text message"
+      },
+      "equipment_id": {
+        "name": "Equipment ID"
+      },
+      "ean": {
+        "name": "EAN"
+      },
+      "gas_equipment_id": {
+        "name": "Gas meter equipment ID"
+      },
+      "gas_ean": {
+        "name": "Gas meter EAN"
+      },
+      "water_equipment_id": {
+        "name": "Water meter equipment ID"
+      },
+      "water_ean": {
+        "name": "Water meter EAN"
+      },
+      "peak_demand_last_month": {
+        "name": "Peak demand last month"
       }
     }
   }

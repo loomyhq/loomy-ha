@@ -36,6 +36,107 @@
       },
       "water": {
         "name": "Wasser"
+      },
+      "consumption_day": {
+        "name": "Energieverbrauch Tag"
+      },
+      "consumption_night": {
+        "name": "Energieverbrauch Nacht"
+      },
+      "injection_day": {
+        "name": "Energieeinspeisung Tag"
+      },
+      "injection_night": {
+        "name": "Energieeinspeisung Nacht"
+      },
+      "average_demand": {
+        "name": "Durchschnittsleistung"
+      },
+      "peak_demand": {
+        "name": "Spitzenleistung diesen Monat"
+      },
+      "current_consumption_phase": {
+        "name": "Leistungsaufnahme {phase}"
+      },
+      "current_injection_phase": {
+        "name": "Einspeiseleistung {phase}"
+      },
+      "voltage": {
+        "name": "Spannung {phase}"
+      },
+      "current": {
+        "name": "Strom {phase}"
+      },
+      "tariff": {
+        "name": "Tarif",
+        "state": {
+          "day": "Tag",
+          "night": "Nacht"
+        }
+      },
+      "breaker_state": {
+        "name": "Hauptschalter",
+        "state": {
+          "disconnected": "Getrennt",
+          "connected": "Verbunden",
+          "ready_for_reconnection": "Bereit zur Wiederverbindung"
+        }
+      },
+      "virtual_relay": {
+        "name": "Virtuelles Relais {relay}",
+        "state": {
+          "disconnected": "Getrennt",
+          "connected": "Verbunden",
+          "ready_for_reconnection": "Bereit zur Wiederverbindung"
+        }
+      },
+      "limiter_threshold": {
+        "name": "Schwelle Leistungsbegrenzer"
+      },
+      "fuse_threshold": {
+        "name": "Schwelle Sicherungsüberwachung"
+      },
+      "gas_valve": {
+        "name": "Gasventil",
+        "state": {
+          "disconnected": "Geschlossen",
+          "connected": "Offen",
+          "ready_for_reconnection": "Bereit zum Öffnen"
+        }
+      },
+      "grid_configuration": {
+        "name": "Netzkonfiguration",
+        "state": {
+          "3x230v": "3x230V",
+          "3n400v": "3N400V"
+        }
+      },
+      "meter_time": {
+        "name": "Zählerzeit"
+      },
+      "text_message": {
+        "name": "Textnachricht"
+      },
+      "equipment_id": {
+        "name": "Zählernummer"
+      },
+      "ean": {
+        "name": "EAN"
+      },
+      "gas_equipment_id": {
+        "name": "Zählernummer Gaszähler"
+      },
+      "gas_ean": {
+        "name": "EAN Gaszähler"
+      },
+      "water_equipment_id": {
+        "name": "Zählernummer Wasserzähler"
+      },
+      "water_ean": {
+        "name": "EAN Wasserzähler"
+      },
+      "peak_demand_last_month": {
+        "name": "Spitzenleistung letzten Monat"
       }
     }
   }

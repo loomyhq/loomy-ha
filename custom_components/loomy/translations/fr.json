@@ -36,6 +36,107 @@
       },
       "water": {
         "name": "Eau"
+      },
+      "consumption_day": {
+        "name": "Consommation d'énergie jour"
+      },
+      "consumption_night": {
+        "name": "Consommation d'énergie nuit"
+      },
+      "injection_day": {
+        "name": "Injection d'énergie jour"
+      },
+      "injection_night": {
+        "name": "Injection d'énergie nuit"
+      },
+      "average_demand": {
+        "name": "Puissance moyenne"
+      },
+      "peak_demand": {
+        "name": "Pic de puissance ce mois-ci"
+      },
+      "current_consumption_phase": {
+        "name": "Puissance consommée {phase}"
+      },
+      "current_injection_phase": {
+        "name": "Puissance injectée {phase}"
+      },
+      "voltage": {
+        "name": "Tension {phase}"
+      },
+      "current": {
+        "name": "Courant {phase}"
+      },
+      "tariff": {
+        "name": "Tarif",
+        "state": {
+          "day": "Jour",
+          "night": "Nuit"
+        }
+      },
+      "breaker_state": {
+        "name": "Disjoncteur",
+        "state": {
+          "disconnected": "Déconnecté",
+          "connected": "Connecté",
+          "ready_for_reconnection": "Prêt pour la reconnexion"
+        }
+      },
+      "virtual_relay": {
+        "name": "Relais virtuel {relay}",
+        "state": {
+          "disconnected": "Déconnecté",
+          "connected": "Connecté",
+          "ready_for_reconnection": "Prêt pour la reconnexion"
+        }
+      },
+      "limiter_threshold": {
+        "name": "Seuil du limiteur de puissance"
+      },
+      "fuse_threshold": {
+        "name": "Seuil de surveillance du fusible"
+      },
+      "gas_valve": {
+        "name": "Vanne de gaz",
+        "state": {
+          "disconnected": "Fermée",
+          "connected": "Ouverte",
+          "ready_for_reconnection": "Prête à l'ouverture"
+        }
+      },
+      "grid_configuration": {
+        "name": "Configuration du réseau",
+        "state": {
+          "3x230v": "3x230V",
+          "3n400v": "3N400V"
+        }
+      },
+      "meter_time": {
+        "name": "Heure du compteur"
+      },
+      "text_message": {
+        "name": "Message texte"
+      },
+      "equipment_id": {
+        "name": "Numéro de compteur"
+      },
+      "ean": {
+        "name": "EAN"
+      },
+      "gas_equipment_id": {
+        "name": "Numéro du compteur de gaz"
+      },
+      "gas_ean": {
+        "name": "EAN du compteur de gaz"
+      },
+      "water_equipment_id": {
+        "name": "Numéro du compteur d'eau"
+      },
+      "water_ean": {
+        "name": "EAN du compteur d'eau"
+      },
+      "peak_demand_last_month": {
+        "name": "Pic de puissance le mois dernier"
       }
     }
   }

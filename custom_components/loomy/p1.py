@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 import re
 
-type P1Value = float | datetime | str
+type P1Value = float | datetime | str | None
 
 # Reduced OBIS identifier (A-B:C.D.E) followed by one or more (value) groups.
 _OBJECT_RE = re.compile(r"^(\d+-\d+:\d+\.\d+\.\d+)((?:\([^()]*\))+)$")
@@ -33,7 +33,7 @@ class P1Telegram:
     header: str
     objects: dict[str, list[P1Value]]
 
-    def get(self, obis: str, index: int = -1) -> P1Value | None:
+    def get(self, obis: str, index: int = -1) -> P1Value:
         """Return a value of an object, or None if it is not in the telegram.
 
         Defaults to the last value, which is the measurement for objects that
@@ -66,15 +66,20 @@ def parse_value(raw: str) -> P1Value:
     """Parse a single value from between the parentheses.
 
     Measurements (123.456*kWh) become floats without their unit, timestamps
-    (YYMMDDhhmmssX) become aware datetimes. Anything else, like identifiers,
-    hex strings and enum values, is returned as is.
+    (YYMMDDhhmmssX) become aware datetimes, or None when they are invalid.
+    Anything else, like identifiers, hex strings and enum values, is returned
+    as is.
     """
     if match := _MEASUREMENT_RE.match(raw):
         return float(match.group(1))
     if _TIMESTAMP_RE.match(raw):
-        return datetime.strptime(raw[:12], "%y%m%d%H%M%S").replace(
-            tzinfo=_TIMEZONES[raw[12]]
-        )
+        try:
+            return datetime.strptime(raw[:12], "%y%m%d%H%M%S").replace(
+                tzinfo=_TIMEZONES[raw[12]]
+            )
+        except ValueError:
+            # Meters are known to publish garbage timestamps, like 000000000000W.
+            return None
     return raw
 
 
