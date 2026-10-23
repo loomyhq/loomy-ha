@@ -2,15 +2,13 @@
 
 from typing import Any
 
-from aiohttp import ClientError
 import voluptuous as vol
 
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_HOST
 
 from .const import DOMAIN
-from .coordinator import async_fetch
-from .p1 import P1ParseError
+from .coordinator import FETCH_ERRORS, async_fetch
 
 
 class LoomyConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -27,7 +25,7 @@ class LoomyConfigFlow(ConfigFlow, domain=DOMAIN):
             self._async_abort_entries_match({CONF_HOST: user_input[CONF_HOST]})
             try:
                 await async_fetch(self.hass, user_input[CONF_HOST])
-            except (ClientError, TimeoutError, P1ParseError):
+            except FETCH_ERRORS:
                 errors["base"] = "cannot_connect"
             else:
                 return self.async_create_entry(

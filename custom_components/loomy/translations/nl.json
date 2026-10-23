@@ -61,10 +61,10 @@
       "current_injection_phase": {
         "name": "Vermogensinjectie {phase}"
       },
-      "voltage": {
+      "voltage_phase": {
         "name": "Spanning {phase}"
       },
-      "current": {
+      "current_phase": {
         "name": "Stroom {phase}"
       },
       "tariff": {

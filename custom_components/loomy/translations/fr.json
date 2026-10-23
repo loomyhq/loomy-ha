@@ -61,10 +61,10 @@
       "current_injection_phase": {
         "name": "Puissance injectée {phase}"
       },
-      "voltage": {
+      "voltage_phase": {
         "name": "Tension {phase}"
       },
-      "current": {
+      "current_phase": {
         "name": "Courant {phase}"
       },
       "tariff": {

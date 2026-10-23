@@ -33,16 +33,14 @@ class P1Telegram:
     header: str
     objects: dict[str, list[P1Value]]
 
-    def get(self, obis: str, index: int = -1) -> P1Value:
-        """Return a value of an object, or None if it is not in the telegram.
+    def get(self, obis: str) -> P1Value:
+        """Return the last value of an object, or None if it is not in the telegram.
 
-        Defaults to the last value, which is the measurement for objects that
-        carry a capture time first, like 0-1:24.2.3(<timestamp>)(<value>).
+        The last value is the measurement for objects that carry a capture time
+        first, like 0-1:24.2.3(<timestamp>)(<value>).
         """
         values = self.objects.get(obis)
-        if not values:
-            return None
-        return values[index]
+        return values[-1] if values else None
 
     def mbus_channel(self, device_type: str) -> int | None:
         """Return the M-Bus channel a submeter of the given type is on."""

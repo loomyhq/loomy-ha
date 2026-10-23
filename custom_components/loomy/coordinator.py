@@ -18,9 +18,15 @@ _LOGGER = logging.getLogger(__name__)
 
 type LoomyConfigEntry = ConfigEntry[LoomyCoordinator]
 
+# Everything that can go wrong while fetching a telegram from the meter.
+FETCH_ERRORS = (ClientError, TimeoutError, P1ParseError)
+
 
 async def async_fetch(hass: HomeAssistant, host: str) -> P1Telegram:
-    """Fetch and parse the current P1 telegram from the meter."""
+    """Fetch and parse the current P1 telegram from the meter.
+
+    Raises one of FETCH_ERRORS when that fails.
+    """
     session = async_get_clientsession(hass)
     async with session.get(
         f"http://{host}/raw", timeout=ClientTimeout(total=5)
@@ -48,5 +54,5 @@ class LoomyCoordinator(DataUpdateCoordinator[P1Telegram]):
         """Fetch data from the meter."""
         try:
             return await async_fetch(self.hass, self.config_entry.data[CONF_HOST])
-        except (ClientError, TimeoutError, P1ParseError) as err:
+        except FETCH_ERRORS as err:
             raise UpdateFailed(f"Error communicating with meter: {err}") from err
