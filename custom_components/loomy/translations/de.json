@@ -1,0 +1,42 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Gerät ist bereits konfiguriert"
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "host": "Host"
+        },
+        "data_description": {
+          "host": "Die IP-Adresse des Zählers, zum Beispiel 192.168.4.25."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "consumption": {
+        "name": "Energieverbrauch"
+      },
+      "injection": {
+        "name": "Energieeinspeisung"
+      },
+      "current_consumption": {
+        "name": "Leistungsaufnahme"
+      },
+      "current_injection": {
+        "name": "Einspeiseleistung"
+      },
+      "gas": {
+        "name": "Gas"
+      },
+      "water": {
+        "name": "Wasser"
+      }
+    }
+  }
+}

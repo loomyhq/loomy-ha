@@ -30,7 +30,7 @@ class LoomySensorEntityDescription(SensorEntityDescription):
 SENSORS = (
     LoomySensorEntityDescription(
         key="consumption",
-        name="Energy consumption",
+        translation_key="consumption",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -40,7 +40,7 @@ SENSORS = (
     ),
     LoomySensorEntityDescription(
         key="injection",
-        name="Energy injection",
+        translation_key="injection",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -48,7 +48,7 @@ SENSORS = (
     ),
     LoomySensorEntityDescription(
         key="current_consumption",
-        name="Power consumption",
+        translation_key="current_consumption",
         device_class=SensorDeviceClass.POWER,
         state_class=SensorStateClass.MEASUREMENT,
         native_unit_of_measurement=UnitOfPower.KILO_WATT,
@@ -56,7 +56,7 @@ SENSORS = (
     ),
     LoomySensorEntityDescription(
         key="current_injection",
-        name="Power injection",
+        translation_key="current_injection",
         device_class=SensorDeviceClass.POWER,
         state_class=SensorStateClass.MEASUREMENT,
         native_unit_of_measurement=UnitOfPower.KILO_WATT,
@@ -64,7 +64,7 @@ SENSORS = (
     ),
     LoomySensorEntityDescription(
         key="gas",
-        name="Gas",
+        translation_key="gas",
         device_class=SensorDeviceClass.GAS,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfVolume.CUBIC_METERS,
@@ -72,7 +72,7 @@ SENSORS = (
     ),
     LoomySensorEntityDescription(
         key="water",
-        name="Water",
+        translation_key="water",
         device_class=SensorDeviceClass.WATER,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfVolume.CUBIC_METERS,

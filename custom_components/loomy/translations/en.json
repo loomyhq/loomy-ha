@@ -16,5 +16,27 @@
         }
       }
     }
+  },
+  "entity": {
+    "sensor": {
+      "consumption": {
+        "name": "Energy consumption"
+      },
+      "injection": {
+        "name": "Energy injection"
+      },
+      "current_consumption": {
+        "name": "Power consumption"
+      },
+      "current_injection": {
+        "name": "Power injection"
+      },
+      "gas": {
+        "name": "Gas"
+      },
+      "water": {
+        "name": "Water"
+      }
+    }
   }
 }

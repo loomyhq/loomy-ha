@@ -1,0 +1,42 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Apparaat is al geconfigureerd"
+    },
+    "error": {
+      "cannot_connect": "Verbinding mislukt"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "host": "Host"
+        },
+        "data_description": {
+          "host": "Het IP-adres van de meter, bijvoorbeeld 192.168.4.25."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "consumption": {
+        "name": "Energieverbruik"
+      },
+      "injection": {
+        "name": "Energie-injectie"
+      },
+      "current_consumption": {
+        "name": "Vermogensverbruik"
+      },
+      "current_injection": {
+        "name": "Vermogensinjectie"
+      },
+      "gas": {
+        "name": "Gas"
+      },
+      "water": {
+        "name": "Water"
+      }
+    }
+  }
+}
