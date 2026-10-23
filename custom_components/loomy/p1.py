@@ -18,8 +18,9 @@ _TIMEZONES = {
     "W": timezone(timedelta(hours=1)),
 }
 
-MBUS_DEVICE_TYPE_GAS = "003"
-MBUS_DEVICE_TYPE_WATER = "007"
+# The M-Bus device types of the submeters, as they report them in 0-n:24.1.0.
+GAS_METER = "003"
+WATER_METER = "007"
 
 
 class P1ParseError(ValueError):

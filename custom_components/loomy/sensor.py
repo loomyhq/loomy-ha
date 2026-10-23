@@ -27,7 +27,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
 from .coordinator import LoomyConfigEntry, LoomyCoordinator
-from .p1 import MBUS_DEVICE_TYPE_GAS, MBUS_DEVICE_TYPE_WATER, P1Telegram, P1Value
+from .p1 import GAS_METER, WATER_METER, P1Telegram, P1Value
 
 type ValueFn = Callable[[P1Telegram], P1Value]
 
@@ -127,36 +127,31 @@ TARIFFS = {"0001": "day", "0002": "night"}
 SWITCH_STATES = {"0": "disconnected", "1": "connected", "2": "ready_for_reconnection"}
 GRID_CONFIGURATIONS = {"230": "3x230v", "400": "3n400v"}
 
-# Descriptions for each kind of sensor, with the fields they share filled in.
-_energy = partial(
-    LoomySensorEntityDescription,
-    device_class=SensorDeviceClass.ENERGY,
-    state_class=SensorStateClass.TOTAL_INCREASING,
-    native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-)
-_power = partial(
-    LoomySensorEntityDescription,
-    device_class=SensorDeviceClass.POWER,
-    state_class=SensorStateClass.MEASUREMENT,
-    native_unit_of_measurement=UnitOfPower.KILO_WATT,
-)
-_voltage = partial(
-    LoomySensorEntityDescription,
-    device_class=SensorDeviceClass.VOLTAGE,
-    state_class=SensorStateClass.MEASUREMENT,
-    native_unit_of_measurement=UnitOfElectricPotential.VOLT,
-)
-_current = partial(
-    LoomySensorEntityDescription,
-    device_class=SensorDeviceClass.CURRENT,
-    state_class=SensorStateClass.MEASUREMENT,
-    native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
-)
-_volume = partial(
-    LoomySensorEntityDescription,
-    state_class=SensorStateClass.TOTAL_INCREASING,
-    native_unit_of_measurement=UnitOfVolume.CUBIC_METERS,
-)
+
+def _quantity(
+    device_class: SensorDeviceClass, unit: str, *, total: bool = False
+) -> partial[LoomySensorEntityDescription]:
+    """Describe a kind of measurement, momentary or a total that only increases.
+
+    The meter publishes 3 decimals, show them all instead of HA's default.
+    """
+    return partial(
+        LoomySensorEntityDescription,
+        device_class=device_class,
+        native_unit_of_measurement=unit,
+        state_class=(
+            SensorStateClass.TOTAL_INCREASING if total else SensorStateClass.MEASUREMENT
+        ),
+        suggested_display_precision=3,
+    )
+
+
+_energy = _quantity(SensorDeviceClass.ENERGY, UnitOfEnergy.KILO_WATT_HOUR, total=True)
+_power = _quantity(SensorDeviceClass.POWER, UnitOfPower.KILO_WATT)
+_voltage = _quantity(SensorDeviceClass.VOLTAGE, UnitOfElectricPotential.VOLT)
+_current = _quantity(SensorDeviceClass.CURRENT, UnitOfElectricCurrent.AMPERE)
+_gas = _quantity(SensorDeviceClass.GAS, UnitOfVolume.CUBIC_METERS, total=True)
+_water = _quantity(SensorDeviceClass.WATER, UnitOfVolume.CUBIC_METERS, total=True)
 _diagnostic = partial(
     LoomySensorEntityDescription, entity_category=EntityCategory.DIAGNOSTIC
 )
@@ -259,32 +254,13 @@ SENSORS: tuple[LoomySensorEntityDescription, ...] = (
         entity_category=EntityCategory.DIAGNOSTIC,
         value_fn=_register("1-0:31.4.0"),
     ),
-    _volume(
-        key="gas",
-        device_class=SensorDeviceClass.GAS,
-        value_fn=_mbus(MBUS_DEVICE_TYPE_GAS, "24.2.3"),
-    ),
-    _enum(
-        key="gas_valve",
-        states=SWITCH_STATES,
-        value_fn=_mbus(MBUS_DEVICE_TYPE_GAS, "24.4.0"),
-    ),
-    _diagnostic(
-        key="gas_equipment_id", value_fn=_text(_mbus(MBUS_DEVICE_TYPE_GAS, "96.1.1"))
-    ),
-    _diagnostic(key="gas_ean", value_fn=_ean(_mbus(MBUS_DEVICE_TYPE_GAS, "96.1.2"))),
-    _volume(
-        key="water",
-        device_class=SensorDeviceClass.WATER,
-        value_fn=_mbus(MBUS_DEVICE_TYPE_WATER, "24.2.1"),
-    ),
-    _diagnostic(
-        key="water_equipment_id",
-        value_fn=_text(_mbus(MBUS_DEVICE_TYPE_WATER, "96.1.1")),
-    ),
-    _diagnostic(
-        key="water_ean", value_fn=_ean(_mbus(MBUS_DEVICE_TYPE_WATER, "96.1.2"))
-    ),
+    _gas(key="gas", value_fn=_mbus(GAS_METER, "24.2.3")),
+    _enum(key="gas_valve", states=SWITCH_STATES, value_fn=_mbus(GAS_METER, "24.4.0")),
+    _diagnostic(key="gas_equipment_id", value_fn=_text(_mbus(GAS_METER, "96.1.1"))),
+    _diagnostic(key="gas_ean", value_fn=_ean(_mbus(GAS_METER, "96.1.2"))),
+    _water(key="water", value_fn=_mbus(WATER_METER, "24.2.1")),
+    _diagnostic(key="water_equipment_id", value_fn=_text(_mbus(WATER_METER, "96.1.1"))),
+    _diagnostic(key="water_ean", value_fn=_ean(_mbus(WATER_METER, "96.1.2"))),
 )
 
 
@@ -315,9 +291,6 @@ class LoomySensor(CoordinatorEntity[LoomyCoordinator], SensorEntity):
         self.entity_description = description
         entry = coordinator.config_entry
         self._attr_unique_id = f"{entry.entry_id}_{description.key}"
-        # The meter publishes 3 decimals, show them all instead of HA's default.
-        if description.native_unit_of_measurement is not None:
-            self._attr_suggested_display_precision = 3
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)},
             name="Loomy",
