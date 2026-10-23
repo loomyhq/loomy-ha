@@ -1,7 +1,7 @@
 {
   "domain": "loomy",
   "name": "Loomy",
-  "codeowners": [],
+  "codeowners": ["@m1dnight"],
   "config_flow": true,
   "documentation": "https://gitlab.com/loomy-hq/loomy-home-assistant",
   "iot_class": "local_polling",

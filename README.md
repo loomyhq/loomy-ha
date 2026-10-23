@@ -1,6 +1,6 @@
 # Loomy for Home Assistant
 
-Reads your smart meter through a Loomy device on your local network.
+Reads out your Loomy dongle via your local area network.
 
 ## Sensors
 
@@ -13,13 +13,17 @@ Reads your smart meter through a Loomy device on your local network.
 | Gas | m³ |
 | Water | m³ |
 
-The energy, gas and water sensors can be used in the Energy dashboard.
-
 ## Installation
+
+### Manual
 
 Requires Home Assistant 2025.3 or newer.
 
 Copy `custom_components/loomy` into the `custom_components` folder of your Home Assistant configuration and restart Home Assistant.
+
+### HACS
+
+The integration can be set up via HACS. Add `https://github.com/loomyhq/loomy-ha` as a custom repository and then add the integration.
 
 ## Setup
 
