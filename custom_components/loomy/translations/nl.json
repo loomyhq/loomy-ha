@@ -36,6 +36,107 @@
       },
       "water": {
         "name": "Water"
+      },
+      "consumption_day": {
+        "name": "Energieverbruik dag"
+      },
+      "consumption_night": {
+        "name": "Energieverbruik nacht"
+      },
+      "injection_day": {
+        "name": "Energie-injectie dag"
+      },
+      "injection_night": {
+        "name": "Energie-injectie nacht"
+      },
+      "average_demand": {
+        "name": "Gemiddeld vermogen"
+      },
+      "peak_demand": {
+        "name": "Piekvermogen deze maand"
+      },
+      "current_consumption_phase": {
+        "name": "Vermogensverbruik {phase}"
+      },
+      "current_injection_phase": {
+        "name": "Vermogensinjectie {phase}"
+      },
+      "voltage_phase": {
+        "name": "Spanning {phase}"
+      },
+      "current_phase": {
+        "name": "Stroom {phase}"
+      },
+      "tariff": {
+        "name": "Tarief",
+        "state": {
+          "day": "Dag",
+          "night": "Nacht"
+        }
+      },
+      "breaker_state": {
+        "name": "Hoofdschakelaar",
+        "state": {
+          "disconnected": "Losgekoppeld",
+          "connected": "Verbonden",
+          "ready_for_reconnection": "Klaar voor herverbinding"
+        }
+      },
+      "virtual_relay": {
+        "name": "Virtueel relais {relay}",
+        "state": {
+          "disconnected": "Losgekoppeld",
+          "connected": "Verbonden",
+          "ready_for_reconnection": "Klaar voor herverbinding"
+        }
+      },
+      "limiter_threshold": {
+        "name": "Drempel vermogensbegrenzer"
+      },
+      "fuse_threshold": {
+        "name": "Drempel zekeringbewaking"
+      },
+      "gas_valve": {
+        "name": "Gasklep",
+        "state": {
+          "disconnected": "Gesloten",
+          "connected": "Open",
+          "ready_for_reconnection": "Klaar om te openen"
+        }
+      },
+      "grid_configuration": {
+        "name": "Netconfiguratie",
+        "state": {
+          "3x230v": "3x230V",
+          "3n400v": "3N400V"
+        }
+      },
+      "meter_time": {
+        "name": "Metertijd"
+      },
+      "text_message": {
+        "name": "Tekstbericht"
+      },
+      "equipment_id": {
+        "name": "Meternummer"
+      },
+      "ean": {
+        "name": "EAN"
+      },
+      "gas_equipment_id": {
+        "name": "Meternummer gasmeter"
+      },
+      "gas_ean": {
+        "name": "EAN gasmeter"
+      },
+      "water_equipment_id": {
+        "name": "Meternummer watermeter"
+      },
+      "water_ean": {
+        "name": "EAN watermeter"
+      },
+      "peak_demand_last_month": {
+        "name": "Piekvermogen vorige maand"
       }
     }
   }
