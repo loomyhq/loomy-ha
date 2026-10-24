@@ -75,7 +75,7 @@ def _mbus(device_type: str, obis: str) -> ValueFn:
     return value
 
 
-def _text(value_fn: ValueFn) -> ValueFn:
+def _text(value_fn: ValueFn) -> Callable[[P1Telegram], str | None]:
     """Decode a hex string, like an equipment ID, into text."""
 
     def value(telegram: P1Telegram) -> str | None:
@@ -160,7 +160,7 @@ _diagnostic = partial(
 def _enum(
     *, key: str, value_fn: ValueFn, states: dict[str, str], **fields: Any
 ) -> LoomySensorEntityDescription:
-    """An enum sensor, translating a raw value like 0001 into one of the states."""
+    """Describe an enum sensor that translates a raw value like 0001 into a state."""
 
     def value(telegram: P1Telegram) -> str | None:
         raw = value_fn(telegram)

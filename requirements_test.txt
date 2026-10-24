@@ -1,0 +1,4 @@
+# The Home Assistant test plugin pins the Home Assistant version it tests against.
+pytest-homeassistant-custom-component==0.13.373
+ruff==0.17.2
+mypy==2.4.0

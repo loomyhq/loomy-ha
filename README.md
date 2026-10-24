@@ -28,3 +28,17 @@ The integration can be set up via HACS. Add `https://github.com/loomyhq/loomy-ha
 ## Setup
 
 Go to **Settings → Devices & services → Add integration → Loomy** and enter the IP address of your Loomy device.
+
+## Development
+
+The checks that CI runs can be run locally with Python 3.14 or newer:
+
+```
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements_test.txt
+ruff check . && ruff format --check .
+mypy custom_components
+pytest
+```
+
+The sensor tests compare every entity against `tests/snapshots`. After an intended change to the sensors, regenerate the snapshot with `pytest --snapshot-update` and review the diff.

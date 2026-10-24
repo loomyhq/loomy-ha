@@ -34,6 +34,8 @@ class LoomyConfigFlow(ConfigFlow, domain=DOMAIN):
 
         return self.async_show_form(
             step_id="user",
-            data_schema=vol.Schema({vol.Required(CONF_HOST): str}),
+            # Newer Home Assistant types this as probatio, a drop-in replacement for
+            # voluptuous, switch the import once that is the minimum version.
+            data_schema=vol.Schema({vol.Required(CONF_HOST): str}),  # type: ignore[arg-type]
             errors=errors,
         )
