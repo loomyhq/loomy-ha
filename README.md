@@ -41,4 +41,8 @@ mypy custom_components
 pytest
 ```
 
+### Releasing
+
+HACS offers GitHub releases as versions, so a tag alone is not enough. Set the new version in `custom_components/loomy/manifest.json`, commit, tag the commit with that same version and push the tag to GitHub. Once the CI workflow passes on the tag it creates the release.
+
 The sensor tests compare every entity against `tests/snapshots`. After an intended change to the sensors, regenerate the snapshot with `pytest --snapshot-update` and review the diff.
