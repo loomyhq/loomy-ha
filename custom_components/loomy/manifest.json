@@ -1,6 +1,9 @@
 {
   "domain": "loomy",
   "name": "Loomy",
+  "categories": [
+    "energy.meters_monitoring"
+  ],
   "codeowners": [
     "@m1dnight"
   ],
